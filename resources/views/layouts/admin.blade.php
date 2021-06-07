@@ -22,8 +22,9 @@
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="{{ asset('theme/assets/media/logos/favicon.ico') }}" />
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 	    @livewireStyles
-
+		@stack('styles')
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -278,7 +279,7 @@
 		<!--begin::Page Scripts(used by this page)-->
 		<!--end::Page Scripts-->
 		@livewireScripts
-
+		@stack('js')
 	</body>
 	<!--end::Body-->
 </html>
