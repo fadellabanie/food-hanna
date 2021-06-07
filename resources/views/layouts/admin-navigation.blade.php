@@ -10,7 +10,37 @@
                 <li class="menu-item" aria-haspopup="true">
                     <a href="{{ route('admin') }}" class="menu-link">
                         <i class="menu-icon flaticon-home"></i>
-                        <span class="menu-text">Dashboard</span>
+                        <span class="menu-text">{{__("Dashboard")}}</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('news.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("News")}}</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('teams.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("Team")}}</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('clients.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("Clients")}}</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('products.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("Products")}}</span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('categories.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("Categories")}}</span>
                     </a>
                 </li>
             </ul>
