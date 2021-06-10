@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', App\Http\Controllers\Dashboard\HomeController::class)->name('admin');
     
+    Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
     Route::resource('news', App\Http\Controllers\Dashboard\NewsController::class);
     Route::resource('teams', App\Http\Controllers\Dashboard\TeamController::class);
     Route::resource('clients', App\Http\Controllers\Dashboard\ClientController::class);

@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Categories;
+namespace App\Http\Livewire\Dashboard\Users;
 
-use App\Models\Category;
+use App\Models\User;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Datatable extends Component
 {
-    use WithPagination;
-
+    
     protected $paginationTheme = 'bootstrap';
 
     public $selectedId;
@@ -22,14 +20,13 @@ class Datatable extends Component
 
     public function destroy()
     {
-        Category::findOrFail($this->selectedId)->delete();
+        User::findOrFail($this->selectedId)->delete();
     }
 
     public function render()
     {
-        return view('livewire.dashboard.categories.datatable',[
-            'categories' => Category::paginate(12)
+        return view('livewire.dashboard.users.datatable',[
+            'users' => User::paginate(12)
         ]);
     }
-  
 }

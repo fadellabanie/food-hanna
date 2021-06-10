@@ -11,7 +11,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('News') }}</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('Clients') }}</h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->
@@ -27,5 +27,5 @@
     </x-slot>
 
 
-   <livewire:dashboard.news.datatable />
+   <livewire:dashboard.clients.datatable />
 </x-admin-layout>

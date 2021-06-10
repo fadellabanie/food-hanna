@@ -5,11 +5,12 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">{{ __('News') }}</span>
+                <span class="card-label font-weight-bolder text-dark">{{ __('Clients') }}</span>
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('news.create') }}">{{ __('Add new') }}</x-add-new-record-button>
+                <x-add-new-record-button href="{{ route('clients.create') }}">{{ __('Add new') }}
+                </x-add-new-record-button>
             </div>
         </div>
         <!--end::Header-->
@@ -21,29 +22,33 @@
                     <thead>
                         <tr class="text-left">
                             <th class="pl-0" style="width: 30px">#</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Title') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Name') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Position') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Description') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($all_news as $news)
+                        @forelse($clients as $client)
                         <tr>
-                            <td class="pl-0 py-6">{{ $news->id }}</td>
+                            <td class="pl-0 py-6">{{ $client->id }}</td>
                             <td class="pl-0">
-                                <a href="{{ route('news.edit', $news) }}"
-                                    class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $news->tilte }}</a>
+                                <a href="{{ route('clients.edit', $client) }}"
+                                    class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $client->name }}</a>
                             </td>
                             <td class="pl-0">
-                                {!! $news->description !!}
+                                {!! $client->position !!}
                             </td>
                             <td class="pl-0">
-                                <img src={{asset($news->image) }} />
+                                {!! $client->description !!}
+                            </td>
+                            <td class="pl-0">
+                                <img src={{asset($client->image) }} />
                             </td>
                             <td class="pr-0 text-left">
-                                <x-edit-record-button href="{{ route('news.edit', $news) }}" />
-                                <x-delete-record-button wire:click="confirm({{ $news->id }})" data-toggle="modal"
+                                <x-edit-record-button href="{{ route('clients.edit', $client) }}" />
+                                <x-delete-record-button wire:click="confirm({{ $client->id }})" data-toggle="modal"
                                     data-target="#deleteModal">
                                     </x-delete-modal>
                             </td>
@@ -58,7 +63,7 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $all_news->links() }}
+            {{ $clients->links() }}
         </div>
         <!--end::Body-->
     </div>

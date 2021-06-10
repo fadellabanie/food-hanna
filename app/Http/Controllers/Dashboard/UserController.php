@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClientController extends Controller
+class UserController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('dashboard.clients.index');
+        return view('dashboard.users.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('dashboard.clients.create');
+        return view('dashboard.users.create');
     }
 
     /**
@@ -56,10 +56,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(User $user)
     {
-        return view('dashboard.clients.edit', [
-            'client' => $client
+        return view('dashboard.users.edit', [
+            'user' => $user
         ]);
     }
 

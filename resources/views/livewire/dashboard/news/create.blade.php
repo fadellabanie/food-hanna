@@ -35,6 +35,7 @@
                         </div>
                         <!--begin::Group-->
                         <div class="form-group row @error('image') validated @enderror">
+                            <div class="col-lg-6">
                             <x-label>{{ __('Image') }}</x-label>
                             <x-filepond
                                 wire:model="image"
@@ -54,6 +55,7 @@
                             </div>
                         </div>
                         <!--end::Group-->
+                    </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">

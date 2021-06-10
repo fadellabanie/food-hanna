@@ -16,7 +16,7 @@
                 <!--end::Info-->
                 <!--begin::Toolbar-->
                 <div class="d-flex align-items-center">
-                    <x-back-button href="{{ route('news.index') }}"></x-back-button>
+                    <x-back-button href="{{ route('teams.index') }}"></x-back-button>
                 </div>
                 <!--end::Toolbar-->
             </div>
@@ -24,6 +24,6 @@
         <!--end::Subheader-->
     </x-slot>
 
-    <livewire:dashboard.news.update :news='$news' />
+    <livewire:dashboard.teams.update :team='$team' />
 
 </x-admin-layout>

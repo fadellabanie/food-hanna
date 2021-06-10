@@ -8,7 +8,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('Create new news') }}</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('Create new categories') }}</h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->
@@ -16,7 +16,7 @@
                 <!--end::Info-->
                 <!--begin::Toolbar-->
                 <div class="d-flex align-items-center">
-                    <x-back-button href="{{ route('news.index') }}"></x-back-button>
+                    <x-back-button href="{{ route('categories.index') }}"></x-back-button>
                 </div>
                 <!--end::Toolbar-->
             </div>
@@ -24,6 +24,6 @@
         <!--end::Subheader-->
     </x-slot>
 
-    <livewire:dashboard.news.create />
+    <livewire:dashboard.categories.create />
 
 </x-admin-layout>

@@ -4,7 +4,7 @@
             <!--begin::Card-->
             <div class="card card-custom gutter-b example example-compact">
                 <div class="card-header">
-                    <h3 class="card-title">{{__("Create Teams")}}</h3>
+                    <h3 class="card-title">{{__("Create Clients")}}</h3>
                 </div>
                 <!--begin::Form-->
                 <form class="form">
@@ -12,13 +12,25 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("Name")}}</x-label>
-                                <x-input type="text" wire:model.defer="team.name" field='name'
+                                <x-input type="text" wire:model.defer="client.name" field='name'
                                     placeholder="{{__('Enter Name')}}" />
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Position")}}</x-label>
-                                <x-input type="text" wire:model.defer="team.position" field='position'
+                                <x-input type="text" wire:model.defer="client.position" field='position'
                                     placeholder="{{__('Enter Position')}}" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <x-label>{{__("English Description")}}</x-label>
+
+                                <x-textarea wire:model.defer="client.description_en" field='description_en'></x-textarea>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <x-label>{{__("Dutch Description")}}</x-label>
+                                <x-textarea wire:model.defer="client.description_nl" field='description_nl'></x-textarea>
                             </div>
                         </div>
                         <!--begin::Group-->
@@ -51,7 +63,7 @@
                                 <button type="button" class="btn btn-success mr-2" wire:click.prevent="submit"
                                     wire:loading.attr="disabled"
                                     wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
-                                <a href="{{route('teams.index')}}" class="btn btn-secondary">{{__("Back")}}</a>
+                                <a href="{{route('clients.index')}}" class="btn btn-secondary">{{__("Back")}}</a>
                             </div>
                             <div class="col-lg-6 text-lg-right">
                                 <button type="reset" class="btn btn-danger">{{__("Delete")}}</button>

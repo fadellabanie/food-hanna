@@ -42,6 +42,11 @@
                         <i class="menu-icon flaticon-home"></i>
                         <span class="menu-text">{{__("Categories")}}</span>
                     </a>
+                </li> <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('users.index') }}" class="menu-link">
+                        <i class="menu-icon flaticon-home"></i>
+                        <span class="menu-text">{{__("User")}}</span>
+                    </a>
                 </li>
             </ul>
             <!--end::Menu Nav-->
