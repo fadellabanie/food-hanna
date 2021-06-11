@@ -31,6 +31,10 @@ class Create extends Component
 
         News::create($validatedData);
 
+        $this->reset('image');
+
+        $this->dispatchBrowserEvent('pondReset');
+
         session()->flash('alert', __('Saved Successfully.'));
 
         return redirect()->route('news.index');
