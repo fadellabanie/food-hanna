@@ -21,65 +21,72 @@
                                     placeholder="{{__('Enter Dutch Name')}}" />
                             </div>
                         </div>
-                       
                         <div class="form-group row">
-                            <div class="col-lg-4">
-                                <x-label>{{__("Category")}}</x-label>
+                            <div class="col-lg-6">
+                                <x-label>{{__("Type")}}</x-label>
                                 <div wire:ignore>
-                                    <select class="form-control @error('father') is-invalid @enderror" name="father" id="kt_select2_1" name="param">
-                 
-                                    <option value="do_ghazal">{{__("Do Ghazal")}}</option>
-                                    <option value="happy_cow_cheese">{{__("Happy Cow Cheese")}}</option>
-                                    <option value="dutso">{{__("Dutso")}}</option>
-                                </select>
+                                    <select class="form-control @error('father') is-invalid @enderror" name="father"
+                                        id="kt_select2_1" wire:model="father">
+                                        <option value="do_ghazal">{{__("Do Ghazal")}}</option>
+                                        <option value="happy_cow_cheese">{{__("Happy Cow Cheese")}}</option>
+                                        <option value="dutso">{{__("Dutso")}}</option>
+                                    </select>
                                 </div>
-                    
                                 <x-error field="father" />
+                            </div>
+                            <div class="col-lg-6">
+                                <x-label>{{__("Category")}}</x-label>
+                                <select class="form-control" wire:model="parent_id">
+                                    <option value="">{{__("Main")}}</option>
+                                    @foreach ($categories as $item)
+                                    <option value="{{$item->id}}">{{$item->name_en}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @if ($childs)
+                            <div class="col-lg-6">
+                                <x-label>{{__("Sub Category")}}</x-label>
+                                <select class="form-control" wire:model="child">
+                                    <option value="">{{__("Main")}}</option>
+                                    @foreach ($childs as $item)
+                                    <option value="{{$item->id}}">{{$item->name_en}}</option>
+                                    @endforeach
 
-                            </div>
-                            <div class="col-lg-4">
-                                <x-label>{{__("Sub Category")}}</x-label>
-                                <select class="form-control" wire:model.defer="parent_id">
-                                    <option value="">{{__("Main")}}</option>
-                                    @foreach ($categories as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div> 
-                            <div class="col-lg-4">
-                                <x-label>{{__("Sub Category")}}</x-label>
-                                <select class="form-control" wire:model.defer="parent_id">
-                                    <option value="">{{__("Main")}}</option>
-                                    @foreach ($categories as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
                                 </select>
                             </div>
-                     
+                            @endif
+                            @if ($subChilds)
+                            <div class="col-lg-6">
+                                <x-label>{{__("Child Category")}}</x-label>
+                                <select class="form-control" wire:model="subChild_id">
+                                    <option value="">{{__("Main")}}</option>
+                                    @foreach ($subChilds as $item)
+                                    <option value="{{$item->id}}">{{$item->name_en}}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            @endif
                         </div>
                         <!--begin::Group-->
                         <div class="form-group row @error('image') validated @enderror">
                             <div class="col-lg-6">
-                            <x-label>{{ __('Image') }}</x-label>
-                            <x-filepond
-                                wire:model="image"
-                                allowImagePreview
-                                imagePreviewMaxHeight="200"
-                                allowFileTypeValidation
-                                acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
-                                allowFileSizeValidation
-                                maxFileSize="2mb"
-                            />
-                            <div class="mt-3 col-9 offset-md-3">
-                                @error('image')
+                                <x-label>{{ __('Image') }}</x-label>
+                                <x-filepond wire:model="image" allowImagePreview imagePreviewMaxHeight="200"
+                                    allowFileTypeValidation acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
+                                    allowFileSizeValidation maxFileSize="2mb" />
+                                <div class="mt-3 col-9 offset-md-3">
+                                    @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
+                            <!--end::Group-->
                         </div>
-                        <!--end::Group-->
-                    </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">

@@ -5,11 +5,12 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">{{ __('categories') }}</span>
+                <span class="card-label font-weight-bolder text-dark">{{ __('Categories') }}</span>
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('categories.create') }}">{{ __('Add new') }}</x-add-new-record-button>
+                <x-add-new-record-button href="{{ route('categories.create') }}">{{ __('Add new') }}
+                </x-add-new-record-button>
             </div>
         </div>
         <!--end::Header-->
@@ -38,13 +39,15 @@
                             </td>
                             <td class="pl-0">
                                 {!! $category->father !!}
-                            </td> 
+                            </td>
                             <td class="pl-0">
                                 {!! $category->father->name_en ?? "" !!}
                             </td>
                             <td class="pl-0">
-                                <img src={{asset($category->image) }} />
-                            </td>
+                                <div class="symbol symbol-40 symbol-sm flex-shrink-0">
+                                    <img alt="" src="{{ asset('storage/' . $category->image) }}" />
+                                </div>
+                               </td>
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('categories.edit', $category) }}" />
                                 <x-delete-record-button wire:click="confirm({{ $category->id }})" data-toggle="modal"
@@ -62,7 +65,8 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $categories->links() }}
+            {{$categories->links('components.custom-pagination-links')}}
+
         </div>
         <!--end::Body-->
     </div>

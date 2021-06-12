@@ -24,26 +24,25 @@
                         <!--begin::Group-->
                         <div class="form-group row @error('image') validated @enderror">
                             <div class="col-lg-6">
-                            <x-label>{{ __('Image') }}</x-label>
-                            <x-filepond
-                                wire:model="image"
-                                allowImagePreview
-                                imagePreviewMaxHeight="200"
-                                allowFileTypeValidation
-                                acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
-                                allowFileSizeValidation
-                                maxFileSize="2mb"
-                            />
-                            <div class="mt-3 col-9 offset-md-3">
-                                @error('image')
+                                <x-label>{{ __('Image') }}</x-label>
+                                <x-filepond wire:model="image" allowImagePreview imagePreviewMaxHeight="200"
+                                    allowFileTypeValidation acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
+                                    allowFileSizeValidation maxFileSize="2mb" />
+                                <div class="mt-3 col-9 offset-md-3">
+                                    @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                    @enderror
+                                    @if(! $image && $team->image)
+                                    <div class="mt-5 symbol symbol-150">
+                                        <img alt="" src="{{ asset('storage/' . $team->image) }}" />
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
+                            <!--end::Group-->
                         </div>
-                        <!--end::Group-->
-                    </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">

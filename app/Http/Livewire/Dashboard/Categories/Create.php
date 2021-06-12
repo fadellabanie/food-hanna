@@ -15,9 +15,16 @@ class Create extends Component
     public $parent_id;
     public $image;
 
-    public $father;
+    public $father = 'do_ghazal';
     public $category;
-    public $SubCategory;
+    public $categories;
+    public $childs;
+    public $child;
+
+    public $subChilds;
+    public $subChild_id;
+
+    public $subCategory;
 
     public $selectedFather = null;
     public $selectedCategory = null;
@@ -27,23 +34,49 @@ class Create extends Component
     protected $rules = [
         'name_en' => 'required|string|min:2|max:50',
         'name_nl' => 'required|string|min:2|max:50',
-        'father' => 'required',
+        'father' => 'nullable',
         'parent_id' => 'nullable',
-        'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'child' => 'nullable',
+        'subChild_id' => 'nullable',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
-    public function updatedFather($father)
+    public function mount()
     {
-        $this->category = Category::where('father', $father)->get();
-        $this->selectedSubCategory = NULL;
-    } 
-    public function updatedCategory($category)
-    {
-        $this->selectedSubCategory = Category::where('parent_id', $category)->get();
+        $this->categories = Category::Parent()->where('father', $this->father)->get();
     }
+    public function updatedFather()
+    {
+        $this->categories = Category::Parent()->where('father', $this->father)->get();
+    }
+
+    public function updatedParentId()
+    {
+        $this->childs = Category::where('parent_id', $this->parent_id)->get();
+    }
+    public function updatedChild()
+    {
+        $this->subChilds = Category::where('parent_id', $this->child)->get();
+    }
+
     public function submit()
     {
         $validatedData = $this->validate();
+        //  dd(  $validatedData);
         $validatedData['image'] = ($this->image) ? $this->image->store('categories', 'public') : '';
+
+        if ($validatedData['parent_id'] == null) {
+            $validatedData['parent_id'] = $validatedData['parent_id'];
+        }
+        if ($validatedData['parent_id'] != null && $validatedData['child'] == null) {
+            $validatedData['parent_id'] = $validatedData['parent_id'];
+        }
+
+        if ($validatedData['parent_id'] != null && $validatedData['child'] != null) {
+            $validatedData['parent_id'] = $validatedData['child'];
+        }
+        if ($validatedData['parent_id'] != null && $validatedData['child'] != null && $validatedData['subChild_id'] != null) {
+            $validatedData['parent_id'] = $validatedData['subChild_id'];
+        }
 
         Category::create($validatedData);
 
@@ -51,11 +84,9 @@ class Create extends Component
 
         return redirect()->route('categories.index');
     }
-  
+
     public function render()
     {
-        return view('livewire.dashboard.categories.create',[
-            'categories' => Category::Parent()->get(),
-        ]);
+        return view('livewire.dashboard.categories.create');
     }
 }

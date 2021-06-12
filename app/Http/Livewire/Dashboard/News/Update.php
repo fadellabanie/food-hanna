@@ -33,15 +33,17 @@ class Update extends Component
 
             $this->news->image = $this->image->store('news', 'public');
         }
-
+      
         $this->news->save();
 
         $this->reset('image');
 
         $this->dispatchBrowserEvent('pondReset');
 
-
         session()->flash('alert', __('Saved Successfully.'));
+
+        return redirect()->route('news.index');
+
     }
     
     public function render()

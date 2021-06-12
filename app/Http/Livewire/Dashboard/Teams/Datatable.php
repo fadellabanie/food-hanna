@@ -28,7 +28,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.teams.datatable',[
-            'teams' => Team::paginate(12)
+            'teams' => Team::paginate()
         ]);
     }
 

@@ -24,7 +24,6 @@
                             <th class="pl-0" style="width: 30px">#</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Name') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Position') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Description') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
@@ -40,11 +39,12 @@
                             <td class="pl-0">
                                 {!! $client->position !!}
                             </td>
+
                             <td class="pl-0">
-                                {!! $client->description !!}
-                            </td>
-                            <td class="pl-0">
-                                <img src={{asset($client->image) }} />
+                                <div class="symbol symbol-40 symbol-sm flex-shrink-0">
+                                    <img alt="" src="{{ asset('storage/' . $client->image) }}" />
+                                </div>
+                               
                             </td>
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('clients.edit', $client) }}" />
@@ -63,7 +63,8 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $clients->links() }}
+            {{$clients->links('components.custom-pagination-links')}}
+
         </div>
         <!--end::Body-->
     </div>

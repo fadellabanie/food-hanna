@@ -9,7 +9,8 @@
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('users.create') }}">{{ __('Add new') }}</x-add-new-record-button>
+                <x-add-new-record-button href="{{ route('users.create') }}">{{ __('Add new') }}
+                </x-add-new-record-button>
             </div>
         </div>
         <!--end::Header-->
@@ -36,12 +37,12 @@
                                     class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $user->name }}</a>
                             </td>
                             <td class="pl-0">
-                                {!! $category->email !!}
-                            </td> 
-                            <td class="pl-0">
-                                {!! $category->role ?? "" !!}
+                                {!! $user->email !!}
                             </td>
-                           
+                            <td class="pl-0">
+                                {!! $user->role ?? "" !!}
+                            </td>
+
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('users.edit', $user) }}" />
                                 <x-delete-record-button wire:click="confirm({{ $user->id }})" data-toggle="modal"
@@ -59,7 +60,8 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $users->links() }}
+            {{$users->links('components.custom-pagination-links')}}
+
         </div>
         <!--end::Body-->
     </div>

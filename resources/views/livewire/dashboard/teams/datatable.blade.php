@@ -9,7 +9,8 @@
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('teams.create') }}">{{ __('Add new') }}</x-add-new-record-button>
+                <x-add-new-record-button href="{{ route('teams.create') }}">{{ __('Add new') }}
+                </x-add-new-record-button>
             </div>
         </div>
         <!--end::Header-->
@@ -39,7 +40,9 @@
                                 {{ $team->position }}
                             </td>
                             <td class="pl-0">
-                                <img src={{asset($team->image) }} />
+                                <div class="symbol symbol-40 symbol-sm flex-shrink-0">
+                                    <img alt="" src="{{ asset('storage/' . $team->image) }}" />
+                                </div>
                             </td>
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('teams.edit', $team) }}" />
@@ -58,7 +61,8 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $teams->links() }}
+            {{$teams->links('components.custom-pagination-links')}}
+
         </div>
         <!--end::Body-->
     </div>

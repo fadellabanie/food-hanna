@@ -4,11 +4,11 @@ namespace App\Http\Livewire\Dashboard\Users;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Datatable extends Component
 {
-    
-    protected $paginationTheme = 'bootstrap';
+    use WithPagination;
 
     public $selectedId;
 
@@ -26,7 +26,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.users.datatable',[
-            'users' => User::paginate(12)
+            'users' => User::paginate()
         ]);
     }
 }

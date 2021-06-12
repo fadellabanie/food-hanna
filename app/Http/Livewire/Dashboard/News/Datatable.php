@@ -10,7 +10,6 @@ class Datatable extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
 
     public $selectedId;
 
@@ -28,7 +27,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.news.datatable',[
-            'all_news' => News::paginate(12)
+            'all_news' => News::paginate()
         ]);
     }
 }

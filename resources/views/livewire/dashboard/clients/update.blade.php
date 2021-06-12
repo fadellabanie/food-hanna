@@ -25,37 +25,38 @@
                             <div class="col-lg-6">
                                 <x-label>{{__("English Description")}}</x-label>
 
-                                <x-textarea wire:model.defer="client.description_en" field='description_en'></x-textarea>
+                                <x-textarea wire:model.defer="client.description_en" field='description_en'>
+                                </x-textarea>
 
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Description")}}</x-label>
-                                <x-textarea wire:model.defer="client.description_nl" field='description_nl'></x-textarea>
+                                <x-textarea wire:model.defer="client.description_nl" field='description_nl'>
+                                </x-textarea>
                             </div>
                         </div>
                         <!--begin::Group-->
                         <div class="form-group row @error('image') validated @enderror">
                             <div class="col-lg-6">
-                            <x-label>{{ __('Image') }}</x-label>
-                            <x-filepond
-                                wire:model="image"
-                                allowImagePreview
-                                imagePreviewMaxHeight="200"
-                                allowFileTypeValidation
-                                acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
-                                allowFileSizeValidation
-                                maxFileSize="2mb"
-                            />
-                            <div class="mt-3 col-9 offset-md-3">
-                                @error('image')
+                                <x-label>{{ __('Image') }}</x-label>
+                                <x-filepond wire:model="image" allowImagePreview imagePreviewMaxHeight="200"
+                                    allowFileTypeValidation acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"
+                                    allowFileSizeValidation maxFileSize="2mb" />
+                                <div class="mt-3 col-9 offset-md-3">
+                                    @error('image')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                    @enderror
+                                    @if(! $image && $client->image)
+                                    <div class="mt-5 symbol symbol-150">
+                                        <img alt="" src="{{ asset('storage/' . $client->image) }}" />
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
+                            <!--end::Group-->
                         </div>
-                        <!--end::Group-->
-                    </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">

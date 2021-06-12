@@ -22,7 +22,6 @@
                         <tr class="text-left">
                             <th class="pl-0" style="width: 30px">#</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Title') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Description') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
@@ -35,11 +34,11 @@
                                 <a href="{{ route('news.edit', $news) }}"
                                     class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $news->tilte }}</a>
                             </td>
+
                             <td class="pl-0">
-                                {!! $news->description !!}
-                            </td>
-                            <td class="pl-0">
-                                <img src={{asset($news->image) }} />
+                                <div class="symbol symbol-40 symbol-sm flex-shrink-0">
+                                    <img alt="" src="{{ asset('storage/' . $news->image) }}" />
+                                </div>
                             </td>
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('news.edit', $news) }}" />
@@ -58,7 +57,9 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $all_news->links() }}
+            {{$all_news->links('components.custom-pagination-links')}}
+
+
         </div>
         <!--end::Body-->
     </div>

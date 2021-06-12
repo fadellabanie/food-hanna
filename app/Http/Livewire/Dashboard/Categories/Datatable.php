@@ -10,8 +10,6 @@ class Datatable extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
-
     public $selectedId;
 
     public function confirm($id)
@@ -28,7 +26,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.categories.datatable',[
-            'categories' => Category::paginate(12)
+            'categories' => Category::paginate()
         ]);
     }
   
