@@ -14,7 +14,7 @@ class Create extends Component
 
     public $name_en;
     public $name_nl;
-    public $parent_id;
+    public $category_id;
     public $description_en;
     public $description_nl;
     public $size;
@@ -30,7 +30,8 @@ class Create extends Component
     public $subChild_id;
 
     protected $rules = [
-        'parent_id' => 'required|exist:categories,id',
+        'father' => 'required',
+        'category_id' => 'required',
         'name_en' => 'required|string|min:3|max:100',
         'name_nl' => 'required|string|min:3|max:100',
         'description_nl' => 'required|string|max:500',
@@ -41,21 +42,15 @@ class Create extends Component
     ];
     public function mount()
     {
-        $this->categories = Category::Parent()->where('father', $this->father)->get();
+        $this->categories = Category::Father($this->father)
+        ->SubChild()
+        ->get();
     }
     public function updatedFather()
     {
-        $this->categories = Category::Parent()->where('father', $this->father)->get();
+        $this->categories = Category::Parent()->Father($this->father)->get();
     }
 
-    public function updatedParentId()
-    {
-        $this->childs = Category::where('parent_id', $this->parent_id)->get();
-    }
-    public function updatedChild()
-    {
-        $this->subChilds = Category::where('parent_id', $this->child)->get();
-    }
     public function submit()
     {
         $validatedData = $this->validate();

@@ -1,15 +1,17 @@
 <div>
+    @include('livewire.dashboard.videos.form')
 
     <!--begin::Advance Table Widget 10-->
     <div class="card card-custom">
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">{{ __('Products') }}</span>
+                <span class="card-label font-weight-bolder text-dark">{{ __('Videos') }}</span>
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('products.create') }}">{{ __('Add new') }}
+                <x-add-new-record-button data-toggle="modal"
+                data-target="#modal" wire:click="resetForm()">{{ __('Add new') }}
                 </x-add-new-record-button>
             </div>
         </div>
@@ -23,37 +25,37 @@
                         <tr class="text-left">
                             <th class="pl-0" style="width: 30px">#</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Name') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Type') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Category') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Video') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('status') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($products as $product)
+                        @forelse($videos as $video)
                         <tr>
-                            <td class="pl-0 py-6">{{ $product->id }}</td>
+                            <td class="pl-0 py-6">{{ $video->id }}</td>
+                           
                             <td class="pl-0">
-                                <a href="{{ route('products.edit', $product) }}"
-                                    class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $product->name }}</a>
+                                {{ $video->name }}
                             </td>
-                            <td class="pl-0">
-                                {{ Str::ucfirst(Str::replace('_',' ',$product->father)) }}
-                            </td> 
-                            <td class="pl-0">
-                                <span class="label label-lg label-light-info label-inline">{{$product->category->name_en}}</span>
+                             <td class="pl-0">
+                                {{ $video->url }}
                             </td>
-                            <td class="pl-0">
-                                <div class="symbol symbol-40 symbol-sm flex-shrink-0">
-                                    <img alt="" src="{{ asset('storage/' . $product->image) }}" />
-                                </div>
+                             <td class="pl-0">
+                                @if ($video->status == 1)
+                                <span class="label label-lg label-light-success label-inline">{{__("Active")}}</span>
+                                @else
+                                <span class="label label-lg label-light-danger label-inline">{{__("Not Active")}}</span>
+                                @endif
                             </td>
-                            <td class="pr-0 text-left">
-                                <x-edit-record-button href="{{ route('products.edit', $product) }}" />
-                                <x-delete-record-button wire:click="confirm({{ $product->id }})" data-toggle="modal"
-                                    data-target="#deleteModal">
-                                    </x-delete-modal>
+                            <td nowrap="nowrap">
+                                <x-edit-record-button data-toggle="modal" data-target="#modal" wire:click="edit({{ $video->id }})" />
+
+                                    <x-delete-record-button wire:click="confirm({{ $video->id }})" data-toggle="modal"
+                                        data-target="#deleteModal">
+                                        </x-delete-modal>
                             </td>
+                           
                         </tr>
                         @empty
                         <tr>
@@ -65,7 +67,7 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{$products->links('components.custom-pagination-links')}}
+            {{$videos->links('components.custom-pagination-links')}}
 
         </div>
         <!--end::Body-->
@@ -76,9 +78,19 @@
 
 @section('scripts')
 
+
 <script type="text/javascript">
-    window.livewire.on('openDeleteModal', () => {
+    window.livewire.on('Modal', () => {
+        $('#modal').modal('hide');
+    });   
+   
+    window.livewire.on('deleteModalOpen', () => {
         $('#deleteModal').modal('show');
+    }); 
+    window.livewire.on('deleteModalClose', () => {
+        $('#deleteModal').modal('hide');
     });
+   
 </script>
+
 @endsection

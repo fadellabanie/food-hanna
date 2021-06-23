@@ -4,7 +4,7 @@
             <!--begin::Card-->
             <div class="card card-custom gutter-b example example-compact">
                 <div class="card-header">
-                    <h3 class="card-title">{{__("Update Categories")}}</h3>
+                    <h3 class="card-title">{{__("Create Categories")}}</h3>
                 </div>
                 <!--begin::Form-->
                 <form class="form">
@@ -12,12 +12,12 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("English Name")}}</x-label>
-                                <x-input type="text" wire:model.defer="category.name_en" field='name_en'
+                                <x-input type="text" wire:model.defer="name_en" field='name_en'
                                     placeholder="{{__('Enter English Name')}}" />
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Name")}}</x-label>
-                                <x-input type="text" wire:model.defer="category.name_nl" field='name_nl'
+                                <x-input type="text" wire:model.defer="name_nl" field='name_nl'
                                     placeholder="{{__('Enter Dutch Name')}}" />
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                                 <x-label>{{__("Type")}}</x-label>
                                 <div wire:ignore>
                                     <select class="form-control @error('father') is-invalid @enderror" name="father"
-                                        id="kt_select2_1" wire:model="category.father">
+                                        id="kt_select2_1" wire:model="father">
                                         <option value="do_ghazal">{{__("Do Ghazal")}}</option>
                                         <option value="happy_cow_cheese">{{__("Happy Cow Cheese")}}</option>
                                         <option value="dutso">{{__("Dutso")}}</option>
@@ -36,8 +36,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Category")}}</x-label>
-                                <select class="form-control" wire:model="category.parent_id">
-                                    <option value="0">{{__("Main")}}</option>
+                                <select class="form-control" wire:model="parent_id">
+                                    <option value="">{{__("Main")}}</option>
                                     @foreach ($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
@@ -45,13 +45,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            @if ($hideChild == true)
-
+                            @if ($hideChild == false)
                             @if ($childs)
                             <div class="col-lg-6">
                                 <x-label>{{__("Sub Category")}}</x-label>
-                                <select class="form-control" wire:model="category.child_id">
-                                    <option value="0">{{__("Main")}}</option>
+                                <select class="form-control" wire:model="child">
+                                    <option value="">{{__("Main")}}</option>
                                     @foreach ($childs as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
@@ -60,13 +59,13 @@
                             </div>
                             @endif
                             @endif
+                            @if ($hideSubChild == false)
 
-                            @if ($hideSubChild == true)
                             @if ($subChilds)
                             <div class="col-lg-6">
                                 <x-label>{{__("Child Category")}}</x-label>
-                                <select class="form-control" wire:model="category.sub_child_id">
-                                    <option value="0">{{__("Main")}}</option>
+                                <select class="form-control" wire:model="subChild_id">
+                                    <option value="">{{__("Main")}}</option>
                                     @foreach ($subChilds as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
@@ -89,11 +88,6 @@
                                         {{ $message }}
                                     </div>
                                     @enderror
-                                    @if(! $image && $category->image)
-                                    <div class="mt-5 symbol symbol-150">
-                                        <img alt="" src="{{ asset('storage/' . $category->image) }}" />
-                                    </div>
-                                    @endif
                                 </div>
                             </div>
                             <!--end::Group-->

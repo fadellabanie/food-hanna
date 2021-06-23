@@ -25,6 +25,8 @@
                             <th class="pl-0" style="min-width: 120px">{{ __('Name') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Parant') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Category') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Child') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Sub Child') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
@@ -38,16 +40,37 @@
                                     class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $category->name_en }}</a>
                             </td>
                             <td class="pl-0">
-                                {!! $category->father !!}
+                                {{ Str::ucfirst(Str::replace('_',' ',$category->father)) }}
                             </td>
                             <td class="pl-0">
-                                {!! $category->father->name_en ?? "" !!}
+                                @if($category->mainFather)
+                                {{$category->mainFather->name_en}}
+                                @else
+                                <span
+                                    class='label label-lg label-light-primary label-inline'>{{__("Main Category")}}</span>
+                                @endif
+                            </td>
+                            <td class="pl-0">
+                                @if($category->mainChild)
+                                {{$category->mainChild->name_en}}
+                                @else
+                                <span class="label label-lg label-light-warning label-inline">{{__("Main Child Category")}}</span>
+                                @endif
+
+                              
+                            </td>
+                            <td class="pl-0">
+                                @if($category->mainSubChild)
+                                {{$category->mainSubChild->name_en}}
+                                @else
+                                <span class="label label-lg label-light-info label-inline">{{__("Main Sub Child Category")}}</span>
+                                @endif
                             </td>
                             <td class="pl-0">
                                 <div class="symbol symbol-40 symbol-sm flex-shrink-0">
                                     <img alt="" src="{{ asset('storage/' . $category->image) }}" />
                                 </div>
-                               </td>
+                            </td>
                             <td class="pr-0 text-left">
                                 <x-edit-record-button href="{{ route('categories.edit', $category) }}" />
                                 <x-delete-record-button wire:click="confirm({{ $category->id }})" data-toggle="modal"

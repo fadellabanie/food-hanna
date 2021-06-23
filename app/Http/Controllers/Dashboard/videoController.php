@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class VideoController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.categories.index');
+        return view('dashboard.videos.index');
     }
 
     /**
@@ -25,7 +25,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
     }
 
     /**
@@ -58,9 +57,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.categories.edit', [
-            'category' => $category
-        ]);
+       
     }
 
     /**

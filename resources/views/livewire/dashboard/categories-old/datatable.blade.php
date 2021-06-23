@@ -5,11 +5,11 @@
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">{{ __('Products') }}</span>
+                <span class="card-label font-weight-bolder text-dark">{{ __('Categories') }}</span>
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button href="{{ route('products.create') }}">{{ __('Add new') }}
+                <x-add-new-record-button href="{{ route('categories.create') }}">{{ __('Add new') }}
                 </x-add-new-record-button>
             </div>
         </div>
@@ -23,34 +23,34 @@
                         <tr class="text-left">
                             <th class="pl-0" style="width: 30px">#</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Name') }}</th>
-                            <th class="pl-0" style="min-width: 120px">{{ __('Type') }}</th>
+                            <th class="pl-0" style="min-width: 120px">{{ __('Parant') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Category') }}</th>
                             <th class="pl-0" style="min-width: 120px">{{ __('Image') }}</th>
                             <th class="pr-0 text-left" style="min-width: 160px">{{ __('Control') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($products as $product)
+                        @forelse($categories as $category)
                         <tr>
-                            <td class="pl-0 py-6">{{ $product->id }}</td>
+                            <td class="pl-0 py-6">{{ $category->id }}</td>
                             <td class="pl-0">
-                                <a href="{{ route('products.edit', $product) }}"
-                                    class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $product->name }}</a>
+                                <a href="{{ route('categories.edit', $category) }}"
+                                    class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{ $category->name_en }}</a>
                             </td>
                             <td class="pl-0">
-                                {{ Str::ucfirst(Str::replace('_',' ',$product->father)) }}
-                            </td> 
+                                {{ Str::ucfirst(Str::replace('_',' ',$category->father)) }}
+                            </td>
                             <td class="pl-0">
-                                <span class="label label-lg label-light-info label-inline">{{$product->category->name_en}}</span>
+                                {!! $category->mainFather->name_en ?? __("Main Category") !!}
                             </td>
                             <td class="pl-0">
                                 <div class="symbol symbol-40 symbol-sm flex-shrink-0">
-                                    <img alt="" src="{{ asset('storage/' . $product->image) }}" />
+                                    <img alt="" src="{{ asset('storage/' . $category->image) }}" />
                                 </div>
                             </td>
                             <td class="pr-0 text-left">
-                                <x-edit-record-button href="{{ route('products.edit', $product) }}" />
-                                <x-delete-record-button wire:click="confirm({{ $product->id }})" data-toggle="modal"
+                                <x-edit-record-button href="{{ route('categories.edit', $category) }}" />
+                                <x-delete-record-button wire:click="confirm({{ $category->id }})" data-toggle="modal"
                                     data-target="#deleteModal">
                                     </x-delete-modal>
                             </td>
@@ -65,7 +65,7 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{$products->links('components.custom-pagination-links')}}
+            {{$categories->links('components.custom-pagination-links')}}
 
         </div>
         <!--end::Body-->

@@ -27,7 +27,7 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.dashboard.products.datatable',[
-            'products' => Product::paginate()
+            'products' => Product::with('category')->paginate()
         ]);
     }
   

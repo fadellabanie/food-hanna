@@ -37,7 +37,7 @@
                             <div class="col-lg-6">
                                 <x-label>{{__("Category")}}</x-label>
                                 <select class="form-control" wire:model="parent_id">
-                                    <option value="">{{__("Main")}}</option>
+                                    <option value="0">{{__("Main")}}</option>
                                     @foreach ($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
@@ -45,11 +45,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            @if ($hideChild == true)
                             @if ($childs)
                             <div class="col-lg-6">
                                 <x-label>{{__("Sub Category")}}</x-label>
-                                <select class="form-control" wire:model="child">
-                                    <option value="">{{__("Main")}}</option>
+                                <select class="form-control" wire:model="child_id">
+                                    <option value="0">{{__("Main")}}</option>
                                     @foreach ($childs as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
@@ -57,17 +58,21 @@
                                 </select>
                             </div>
                             @endif
+                            @endif
+
+                            @if ($hideSubChild == true)
                             @if ($subChilds)
                             <div class="col-lg-6">
                                 <x-label>{{__("Child Category")}}</x-label>
-                                <select class="form-control" wire:model="subChild_id">
-                                    <option value="">{{__("Main")}}</option>
+                                <select class="form-control" wire:model="sub_child_id">
+                                    <option value="0">{{__("Main")}}</option>
                                     @foreach ($subChilds as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
 
                                 </select>
                             </div>
+                            @endif
                             @endif
                         </div>
                         <!--begin::Group-->

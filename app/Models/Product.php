@@ -11,7 +11,8 @@ class Product extends Model
     use HasFactory, Translatable;
 
     protected $fillable = [
-        'parent_id',
+        'father',
+        'category_id',
         'name_en',
         'name_nl',
         'description_nl',
@@ -24,4 +25,9 @@ class Product extends Model
         'name',
         'description'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('father');
             $table->string('parent_id')->nullable();
+            $table->string('child_id')->nullable();
+            $table->string('sub_child_id')->nullable();
             $table->string('name_en');
             $table->string('name_nl');
             $table->string('image');

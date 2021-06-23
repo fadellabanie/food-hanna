@@ -38,7 +38,6 @@
                         <!--begin::Group-->
                         <div class="form-group row @error('image') validated @enderror">
                             <div class="col-lg-6">
-
                                 <x-label>{{ __('Image') }}</x-label>
                                 <x-filepond wire:model="image" allowImagePreview imagePreviewMaxHeight="200"
                                     allowFileTypeValidation acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg']"

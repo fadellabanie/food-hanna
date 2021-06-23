@@ -55,42 +55,16 @@
                                     </select>
                                 </div>
                                 <x-error field="father" />
-                            </div>
+                            </div>  
                             <div class="col-lg-6">
-                                <x-label>{{__("Category")}}</x-label>
-                                <select class="form-control" wire:model="parent_id">
-                                    <option value="">{{__("Main")}}</option>
+                                <x-label>{{__("Child Category")}}</x-label>
+                                <select class="form-control" wire:model="category_id">
                                     @foreach ($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name_en}}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            @if ($childs)
-                            <div class="col-lg-6">
-                                <x-label>{{__("Sub Category")}}</x-label>
-                                <select class="form-control" wire:model="child">
-                                    <option value="">{{__("Main")}}</option>
-                                    @foreach ($childs as $item)
-                                    <option value="{{$item->id}}">{{$item->name_en}}</option>
-                                    @endforeach
 
                                 </select>
                             </div>
-                            @endif
-                            @if ($subChilds)
-                            <div class="col-lg-6">
-                                <x-label>{{__("Child Category")}}</x-label>
-                                <select class="form-control" wire:model="subChild_id">
-                                    <option value="">{{__("Main")}}</option>
-                                    @foreach ($subChilds as $item)
-                                    <option value="{{$item->id}}">{{$item->name_en}}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                            @endif
                         </div>
                       
                         <!--begin::Group-->
