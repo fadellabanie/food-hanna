@@ -10,7 +10,6 @@ use Livewire\WithFileUploads;
 class Create extends Component
 {
     use WithFileUploads;
-    use HFUpload;
 
     public $name_en;
     public $name_nl;

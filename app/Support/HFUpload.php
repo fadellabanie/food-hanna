@@ -2,7 +2,9 @@
 
 namespace App\Support;
 
-trait HFUpload
+use Illuminate\Support\Facades\Storage;
+
+class HFUpload
 {
     protected $folder;
     protected $file;
@@ -42,18 +44,8 @@ trait HFUpload
         return $uploadPath;
     }
 
-    public function filename()
+    public function upload()
     {
-        $name = sha1(time() . $this->file->getClientOriginalName());
-        $extension = $this->file->getClientOriginalExtension();
-
-        return "{$name}.{$extension}";
-    }
-
-    public function uplaod()
-    {
-        $this->file->move(public_path() . '/' . $this->uploadPath(), $this->filename());
-
-        return $this->uploadPath() . '/' . $this->filename();
+        return Storage::disk('public')->put($this->uploadPath(), $this->file);
     }
 }

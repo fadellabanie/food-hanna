@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Dashboard\News;
 
 use App\Models\News;
 use Livewire\Component;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Update extends Component
@@ -27,13 +29,13 @@ class Update extends Component
         $this->validate();
 
         if ($this->image) {
-            if (Storage::disk('public')->exists($this->news->image)) {
-                Storage::disk('public')->delete($this->news->image);
+            if (File::exists($this->news->image)) {
+                File::delete($this->news->image);
             }
 
-            $this->news->image = $this->image->store('news', 'public');
+            $this->news->image = HFUpload::make($this->image)->folder('news')->upload();
         }
-      
+
         $this->news->save();
 
         $this->reset('image');
@@ -43,9 +45,8 @@ class Update extends Component
         session()->flash('alert', __('Saved Successfully.'));
 
         return redirect()->route('news.index');
-
     }
-    
+
     public function render()
     {
         return view('livewire.dashboard.news.update');

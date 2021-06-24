@@ -90,7 +90,7 @@ class Update extends Component
                 File::delete($this->category->image);
             }
 
-            $this->category->image = HFUpload::make($this->image)->folder('categories')->uplaod();
+            $this->category->image = HFUpload::make($this->image)->folder('categories')->upload();
         }
 
         $validatedData['image'] = ($this->image) ? $this->image->store('categories', 'public') : '';

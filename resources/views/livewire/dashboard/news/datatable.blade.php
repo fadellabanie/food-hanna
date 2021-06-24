@@ -37,7 +37,7 @@
 
                             <td class="pl-0">
                                 <div class="symbol symbol-40 symbol-sm flex-shrink-0">
-                                    <img alt="" src="{{ asset('storage/' . $news->image) }}" />
+                                    <img alt="" src="{{ asset($news->image) }}" />
                                 </div>
                             </td>
                             <td class="pr-0 text-left">
