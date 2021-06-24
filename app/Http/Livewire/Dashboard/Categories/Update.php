@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Dashboard\Categories;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Update extends Component
@@ -71,7 +73,7 @@ class Update extends Component
     public function updatedCategoryChildId()
     {
         $this->subChilds = Category::where('father', $this->father)->where('parent_id', $this->category->parent_id)->where('child_id', $this->category->child_id)->get();
-       
+
         if ($this->category->child_id != 0) {
             $this->hideSubChild = true;
         } else {
@@ -84,11 +86,11 @@ class Update extends Component
         $validatedData = $this->validate();
 
         if ($this->image) {
-            if (Storage::disk('public')->exists($this->category->image)) {
-                Storage::disk('public')->delete($this->category->image);
+            if (File::exists($this->category->image)) {
+                File::delete($this->category->image);
             }
 
-            $this->category->image = $this->image->store('categories', 'public');
+            $this->category->image = HFUpload::make($this->image)->folder('categories')->uplaod();
         }
 
         $validatedData['image'] = ($this->image) ? $this->image->store('categories', 'public') : '';

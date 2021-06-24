@@ -57,7 +57,7 @@
                                 <span class="label label-lg label-light-warning label-inline">{{__("Main Child Category")}}</span>
                                 @endif
 
-                              
+
                             </td>
                             <td class="pl-0">
                                 @if($category->mainSubChild)
@@ -68,7 +68,7 @@
                             </td>
                             <td class="pl-0">
                                 <div class="symbol symbol-40 symbol-sm flex-shrink-0">
-                                    <img alt="" src="{{ asset('storage/' . $category->image) }}" />
+                                    <img alt="" src="{{ asset($category->image) }}" />
                                 </div>
                             </td>
                             <td class="pr-0 text-left">

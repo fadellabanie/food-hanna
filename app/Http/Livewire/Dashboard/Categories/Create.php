@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Dashboard\Categories;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
 
 class Create extends Component
 {
     use WithFileUploads;
+    use HFUpload;
 
     public $name_en;
     public $name_nl;
@@ -71,7 +73,7 @@ class Create extends Component
         $validatedData = $this->validate();
 
 
-        $validatedData['image'] = ($this->image) ? $this->image->store('categories', 'public') : '';
+        $validatedData['image'] = ($this->image) ? HFUpload::make($this->image)->folder('categories')->upload() : '';
 
         if ($validatedData['parent_id'] == 0) {
             $validatedData['parent_id'] = 0;
