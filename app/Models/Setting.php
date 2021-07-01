@@ -17,5 +17,8 @@ class Setting extends Model
         'twitter',
         'linkedin',
         'google_plus',
+        'do_ghazal',
+        'happy_cow_cheese',
+        'dutso',
     ];
 }

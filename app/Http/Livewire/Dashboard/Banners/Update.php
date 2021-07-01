@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard\Teams;
+namespace App\Http\Livewire\Dashboard\Banners;
 
 use App\Models\Team;
 use Livewire\Component;
@@ -25,13 +25,13 @@ class Update extends Component
     {
         $this->validate();
         if ($this->image) {
-            if (Storage::disk('public')->exists($this->team->image)) {
-                Storage::disk('public')->delete($this->team->image);
+            if (Storage::disk('public')->exists($this->client->image)) {
+                Storage::disk('public')->delete($this->client->image);
             }
 
-            $this->team->image = $this->image->store('teams', 'public');
+            $this->client->image = $this->image->store('clients', 'public');
         }
-        $this->team->save();
+        $this->banner->save();
 
         $this->reset('image');
 
@@ -39,11 +39,11 @@ class Update extends Component
         session()->flash('alert', __('Saved Successfully.'));
 
 
-        return redirect()->route('teams.index');
+        return redirect()->route('banners.index');
     }
 
     public function render()
     {
-        return view('livewire.dashboard.teams.update');
+        return view('livewire.dashboard.banners.update');
     }
 }

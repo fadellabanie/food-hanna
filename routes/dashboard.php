@@ -11,6 +11,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('clients', App\Http\Controllers\Dashboard\ClientController::class);
     Route::resource('products', App\Http\Controllers\Dashboard\ProductController::class);
     Route::resource('categories', App\Http\Controllers\Dashboard\CategoryController::class);
+    Route::resource('banners', App\Http\Controllers\Dashboard\BannerController::class);
     Route::get('settings', [App\Http\Controllers\Dashboard\SettingController::class, 'edit'])->name('settings.edit');
     Route::get('videos', [App\Http\Controllers\Dashboard\VideoController::class, 'index'])->name('videos.index');
 });

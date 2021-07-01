@@ -21,4 +21,9 @@ class News extends Model
         'title',
         'description'
     ];
+/*
+    public function scopeActive($query)
+    {
+        return $query->where('status', true);
+    }*/
 }

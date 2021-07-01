@@ -4,10 +4,16 @@ namespace App\Http\Livewire\Dashboard\Settings;
 
 use App\Models\Setting;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Update extends Component
 {
+    use WithFileUploads;
+
     public Setting $setting;
+    public $do_ghazal;
+    public $happy_cow_cheese;
+    public $dutso;
 
     protected $rules = [
         'setting.address' => 'required',
@@ -18,6 +24,9 @@ class Update extends Component
         'setting.twitter' => 'required',
         'setting.linkedin' => 'required',
         'setting.google_plus' => 'required',
+        'setting.do_ghazal' => 'required',
+        'setting.happy_cow_cheese' => 'required',
+        'setting.dutso' => 'required',
     ];
 
     public function submit()
@@ -25,7 +34,21 @@ class Update extends Component
         $this->validate();
 
         $this->setting->save();
-
+        if($this->happy_cow_cheese) {
+            $this->setting->update([
+                'happy_cow_cheese' => $this->happy_cow_cheese->store('settings', 'public')
+            ]);
+        }
+        if($this->do_ghazal) {
+            $this->setting->update([
+                'do_ghazal' => $this->do_ghazal->store('settings', 'public')
+            ]);
+        }
+        if($this->dutso) {
+            $this->setting->update([
+                'dutso' => $this->dutso->store('settings', 'public')
+            ]);
+        }
         session()->flash('alert', __('Saved Successfully.'));
         return redirect()->route('admin');
     }
