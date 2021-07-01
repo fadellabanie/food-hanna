@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard\News;
 
 use App\Models\News;
 use Livewire\Component;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -27,7 +28,7 @@ class Create extends Component
     public function submit()
     {
         $validatedData = $this->validate();
-        $validatedData['image'] = ($this->image) ? $this->image->store('news', 'public') : '';
+        $validatedData['image'] = ($this->image) ? HFUpload::make($this->image)->folder('news')->upload() : '';
 
         News::create($validatedData);
 

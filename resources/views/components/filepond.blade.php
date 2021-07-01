@@ -28,7 +28,7 @@
     "
     class="col-9"
 >
-    <input type="file" x-ref="{{ $attributes->get('ref') ?? 'input' }}" />
+    <input type="file" x-ref="{{ $attributes->get('ref') ?? 'input' }}"  />
 </div>
 
 @push('styles')

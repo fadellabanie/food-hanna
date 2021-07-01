@@ -91,7 +91,7 @@
                                     @enderror
                                     @if(! $image && $category->image)
                                     <div class="mt-5 symbol symbol-150">
-                                        <img alt="" src="{{ asset('storage/' . $category->image) }}" />
+                                        <img alt="" src="{{ asset($category->image) }}" />
                                     </div>
                                     @endif
                                 </div>

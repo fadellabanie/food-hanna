@@ -11,15 +11,24 @@ if (! function_exists('svg')) {
     }
 }
 
-function formatBytes($size, $precision = 2)
-{
-    $base = log((float) $size, 1024);
-    $suffixes = ['', 'K', 'M', 'G', 'T'];
-
-    return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
+if (! function_exists('formatDate')) {
+    function formatDate($date)
+    {
+        return date('d M Y', strtotime($date));
+    }
 }
 
-function formatDate($date)
-{
-    return date('d M Y', strtotime($date));
+if (! function_exists('upload')) {
+    function upload($path,$file)
+    {
+        $baseDir = 'uploads/' . $path;
+
+        if (!file_exists($baseDir)) {
+            mkdir($baseDir, 0777, true);
+        }
+
+        $name = sha1(time() . $file->getClientOriginalName());
+        $extension = $file->getClientOriginalExtension();
+        $fileName = "{$name}.{$extension}";
+    }
 }
