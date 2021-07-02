@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Application\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('main-categories/{name}', [HomeController::class, 'showFatherCategory'])->name('show.father.categories.by.type');
 Route::get('categories/{name}', [HomeController::class, 'showCategory'])->name('show.categories.by.type');
 Route::get('products/{name}', [HomeController::class, 'allProduct'])->name('show.products.by.type');
 Route::get('products/{name}', [HomeController::class, 'showProduct'])->name('show.products.by.type');

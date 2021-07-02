@@ -24,27 +24,46 @@ class Update extends Component
         'setting.twitter' => 'required',
         'setting.linkedin' => 'required',
         'setting.google_plus' => 'required',
-        'setting.do_ghazal' => 'required',
-        'setting.happy_cow_cheese' => 'required',
-        'setting.dutso' => 'required',
+        'dutso' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'do_ghazal' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'happy_cow_cheese' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
+
+    public function updatedDoGhazal()
+    {
+        $this->validate([
+            'do_ghazal' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+    }
+    public function updatedHappyCowCheese()
+    {
+        $this->validate([
+            'happy_cow_cheese' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+    }
+    public function updatedDutso()
+    {
+        $this->validate([
+            'dutso' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+    }
 
     public function submit()
     {
-        $this->validate();
 
+        $this->validate();
         $this->setting->save();
-        if($this->happy_cow_cheese) {
+        if ($this->happy_cow_cheese) {
             $this->setting->update([
                 'happy_cow_cheese' => $this->happy_cow_cheese->store('settings', 'public')
             ]);
         }
-        if($this->do_ghazal) {
+        if ($this->do_ghazal) {
             $this->setting->update([
                 'do_ghazal' => $this->do_ghazal->store('settings', 'public')
             ]);
         }
-        if($this->dutso) {
+        if ($this->dutso) {
             $this->setting->update([
                 'dutso' => $this->dutso->store('settings', 'public')
             ]);

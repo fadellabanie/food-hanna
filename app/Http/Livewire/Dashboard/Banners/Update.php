@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Banners;
 
+use App\Models\Banner;
 use App\Models\Team;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,31 +12,30 @@ class Update extends Component
 {
     use WithFileUploads;
 
-    public  Team $team;
-    public $image;
+    public  Banner $banner;
+
+    public $images;
+
     protected $rules = [
-        'team.name' => 'required|string|min:2|max:50',
-        'team.position' => 'required|string|min:2|max:100',
-        'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'banner.location' => 'required',
+        'banner.status' => 'required',
+        'images' => 'nullable',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
     ];
 
-
+    public function updatedImages()
+    {
+        $this->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+    }
 
     public function submit()
     {
         $this->validate();
-        if ($this->image) {
-            if (Storage::disk('public')->exists($this->client->image)) {
-                Storage::disk('public')->delete($this->client->image);
-            }
-
-            $this->client->image = $this->image->store('clients', 'public');
-        }
+     
         $this->banner->save();
 
-        $this->reset('image');
-
-        $this->dispatchBrowserEvent('pondReset');
         session()->flash('alert', __('Saved Successfully.'));
 
 

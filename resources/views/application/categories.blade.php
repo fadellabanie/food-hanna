@@ -62,9 +62,11 @@
     <div class="row row-cols-3 g-1 g-lg-5">
         @foreach ($categories as $category)
       <div class="col">
+        <a href="{{route('show.categories.by.type',$category->name_en)}}">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <img src="{{asset($category->image)}}" class="rounded-circle shadow p-3 bg-white w-75" alt="{{$category->name}}">
         </div>
+        </a>
       </div>
       @endforeach
     </div>

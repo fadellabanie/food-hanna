@@ -12,12 +12,12 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("Name")}}</x-label>
-                                <x-input type="text" wire:model.defer="client.name" field='name'
+                                <x-input type="text" wire:model.defer="client.name" field='client.name'
                                     placeholder="{{__('Enter Name')}}" />
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Position")}}</x-label>
-                                <x-input type="text" wire:model.defer="client.position" field='position'
+                                <x-input type="text" wire:model.defer="client.position" field='client.position'
                                     placeholder="{{__('Enter Position')}}" />
                             </div>
                         </div>
@@ -25,13 +25,13 @@
                             <div class="col-lg-6">
                                 <x-label>{{__("English Description")}}</x-label>
 
-                                <x-textarea wire:model.defer="client.description_en" field='description_en'>
+                                <x-textarea wire:model.defer="client.description_en" field='client.description_en'>
                                 </x-textarea>
 
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Description")}}</x-label>
-                                <x-textarea wire:model.defer="client.description_nl" field='description_nl'>
+                                <x-textarea wire:model.defer="client.description_nl" field='client.description_nl'>
                                 </x-textarea>
                             </div>
                         </div>

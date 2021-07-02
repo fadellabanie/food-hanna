@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Categories;
 use Livewire\Component;
 use App\Models\Category;
 use App\Support\HFUpload;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,7 @@ class Update extends Component
     public $sub_child_id;
     public $image;
 
-    public $father = 'do_ghazal';
+    public $father;
     public $categories;
     public $childs;
     public $subChilds;
@@ -56,13 +57,14 @@ class Update extends Component
     }
     public function updatedCategoryFather()
     {
-        $this->categories = Category::Parent()->where('father', $this->father)->get();
+        $this->categories = Category::Parent()->where('father', $this->category->father)->get();
+     
     }
 
     public function updatedCategoryParentId()
     {
 
-        $this->childs = Category::where('father', $this->father)->where('parent_id', $this->category->parent_id)->where('child_id',0)->get();
+        $this->childs = Category::where('father', $this->category->father)->where('parent_id', $this->category->parent_id)->where('child_id',0)->get();
         if ($this->category->parent_id != 0) {
             $this->hideChild = true;
         } else {
@@ -95,27 +97,28 @@ class Update extends Component
 
         $validatedData['image'] = ($this->image) ? $this->image->store('categories', 'public') : '';
 
-        if ($validatedData['parent_id'] == 0) {
-            $validatedData['parent_id'] = 0;
-            $validatedData['child_id'] = 0;
-            $validatedData['sub_child_id'] = 0;
+        if ($validatedData['category']['parent_id'] == 0) {
+            $validatedData['category']['parent_id'] = 0;
+            $validatedData['category']['child_id'] = 0;
+            $validatedData['category']['sub_child_id'] = 0;
         }
-        if ($validatedData['parent_id'] != 0 && $validatedData['child_id'] == 0) {
-            $validatedData['parent_id'] =  $validatedData['parent_id'];
-            $validatedData['child_id'] = 0;
-            $validatedData['sub_child_id'] = 0;
+        if ($validatedData['category']['parent_id'] != 0 && $validatedData['category']['child_id'] == 0) {
+            $validatedData['category']['parent_id'] =  $validatedData['category']['parent_id'];
+            $validatedData['category']['child_id'] = 0;
+            $validatedData['category']['sub_child_id'] = 0;
         }
-        if ($validatedData['parent_id'] != 0 && $validatedData['child_id'] != 0) {
-            $validatedData['parent_id'] =  $validatedData['parent_id'];
-            $validatedData['child_id'] = $validatedData['child_id'];
-            $validatedData['sub_child_id'] = 0;
+        if ($validatedData['category']['parent_id'] != 0 && $validatedData['category']['child_id'] != 0) {
+            $validatedData['category']['parent_id'] =  $validatedData['category']['parent_id'];
+            $validatedData['category']['child_id'] = $validatedData['category']['child_id'];
+            $validatedData['category']['sub_child_id'] = 0;
         }
-        if ($validatedData['parent_id'] != 0 && $validatedData['child_id'] != 0  && $validatedData['sub_child_id'] != 0) {
-            $validatedData['parent_id'] =  $validatedData['parent_id'];
-            $validatedData['child_id'] = $validatedData['child_id'];
-            $validatedData['sub_child_id'] = $validatedData['sub_child_id'];
+        if ($validatedData['category']['parent_id'] != 0 && $validatedData['category']['child_id'] != 0  && $validatedData['category']['sub_child_id'] != 0) {
+            $validatedData['category']['parent_id'] =  $validatedData['category']['parent_id'];
+            $validatedData['category']['child_id'] = $validatedData['category']['child_id'];
+            $validatedData['category']['sub_child_id'] = $validatedData['category']['sub_child_id'];
         }
-
+        $validatedData['category']['name_en'] = Str::slug($validatedData['category']['name_en'] , "-");
+        $validatedData['category']['name_nl'] = Str::slug($validatedData['category']['name_nl'] , "-");
         $this->category->save();
 
         $this->reset('image');

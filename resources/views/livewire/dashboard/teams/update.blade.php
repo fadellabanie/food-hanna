@@ -12,12 +12,12 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("Name")}}</x-label>
-                                <x-input type="text" wire:model.defer="team.name" field='name'
+                                <x-input type="text" wire:model.defer="team.name" field='team.name'
                                     placeholder="{{__('Enter Name')}}" />
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Position")}}</x-label>
-                                <x-input type="text" wire:model.defer="team.position" field='position'
+                                <x-input type="text" wire:model.defer="team.position" field='team.position'
                                     placeholder="{{__('Enter Position')}}" />
                             </div>
                         </div>

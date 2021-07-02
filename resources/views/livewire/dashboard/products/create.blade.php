@@ -91,7 +91,7 @@
                                 <button type="button" class="btn btn-success mr-2" wire:click.prevent="submit"
                                     wire:loading.attr="disabled"
                                     wire:loading.class="spinner spinner-white spinner-left">{{__("Save")}}</button>
-                                <a href="{{route('categories.index')}}" class="btn btn-secondary">{{__("Back")}}</a>
+                                <a href="{{route('products.index')}}" class="btn btn-secondary">{{__("Back")}}</a>
                             </div>
                             <div class="col-lg-6 text-lg-right">
                                 <button type="reset" class="btn btn-danger">{{__("Delete")}}</button>

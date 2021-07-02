@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Categories;
 use Livewire\Component;
 use App\Models\Category;
 use App\Support\HFUpload;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -93,7 +94,10 @@ class Create extends Component
             $validatedData['parent_id'] =  $validatedData['parent_id'];
             $validatedData['child_id'] = $validatedData['child_id'];
             $validatedData['sub_child_id'] = $validatedData['sub_child_id'];
+            $validatedData['sub_child_id'] = $validatedData['sub_child_id'];
         }
+        $validatedData['name_en'] = Str::slug($validatedData['name_en'] , "-");
+        $validatedData['name_nl'] = Str::slug($validatedData['name_nl'] , "-");
 
         Category::create($validatedData);
 

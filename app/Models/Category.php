@@ -36,6 +36,18 @@ class Category extends Model
     {
         return $query->where('sub_child_id','!=',0);
     }
+      public function scopeOnlyParent($query)
+    {
+        return $query->where('child_id',0)->where('sub_child_id',0);
+    } 
+    public function scopeOnlyChild($query)
+    {
+        return $query->where('child_id','!=',0)->where('sub_child_id',0);
+    } 
+     public function scopeOnlySubChild($query)
+    {
+        return $query->where('sub_child_id',0);
+    }
 
     public function mainFather()
     {

@@ -33,13 +33,16 @@
                             <td class="pl-0 py-6">{{ $banner->id }}</td>
                             <td class="pl-0 py-6">{{ $banner->location }}</td>
                             <td class="pl-0">
+                                @foreach ($banner->images as $item)
+                                    
                                 <div class="symbol symbol-40 symbol-sm flex-shrink-0">
-                                    <img alt="" src="{{ asset('storage/' . $banner->image) }}" />
+                                    <img alt="" src="{{ asset($item->image) }}" />
                                 </div>
+                                @endforeach
                             </td>
                             <td class="pr-0 text-left">
-                                <x-edit-record-button href="{{ route('teams.edit', $banner) }}" />
-                                <x-delete-record-button wire:click="confirm({{ $team->id }})" data-toggle="modal"
+                                <x-edit-record-button href="{{ route('banners.edit', $banner) }}" />
+                                <x-delete-record-button wire:click="confirm({{ $banner->id }})" data-toggle="modal"
                                     data-target="#deleteModal">
                                     </x-delete-modal>
                             </td>

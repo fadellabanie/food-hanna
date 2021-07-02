@@ -30,7 +30,7 @@
                             <div class="col-lg-12">
                                 <x-label>{{__("Url")}}</x-label>
                                 <div class="col-12">
-                                    <x-input wire:model.lazy="url" type="text" field="url"></x-input>
+                                    <x-input wire:model.lazy="url" type="url" field="url" placeholder="https://www.youtube.com/embed/XXXXXXXX"></x-input>
                                     <span class="form-text text-muted">{{__("Please enter url of video")}}</span>
                                 </div>
                             </div>

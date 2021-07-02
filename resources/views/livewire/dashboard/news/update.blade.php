@@ -12,12 +12,12 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("English Ttile")}}</x-label>
-                                <x-input type="text" wire:model.defer="news.title_en" field='title_en'
+                                <x-input type="text" wire:model.defer="news.title_en" field='news.title_en'
                                     placeholder="{{__('Enter English Ttile')}}" />
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Ttile")}}</x-label>
-                                <x-input type="text" wire:model.defer="news.title_nl" field='title_nl'
+                                <x-input type="text" wire:model.defer="news.title_nl" field='news.title_nl'
                                     placeholder="{{__('Enter Dutch Title')}}" />
                             </div>
                         </div>
@@ -25,13 +25,13 @@
                             <div class="col-lg-6">
                                 <x-label>{{__("English Description")}}</x-label>
 
-                                <x-textarea wire:model.defer="news.description_en" field='description_en'>
+                                <x-textarea wire:model.defer="news.description_en" field='news.description_en'>
                                 </x-textarea>
 
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Description")}}</x-label>
-                                <x-textarea wire:model.defer="news.description_nl" field='description_nl'>
+                                <x-textarea wire:model.defer="news.description_nl" field='news.description_nl'>
                                 </x-textarea>
                             </div>
                         </div>
