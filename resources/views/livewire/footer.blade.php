@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4 col-12">
                 <div class="d-flex text-white">
-                    Logo Light
+                    <img src="{{ asset('application/assets/dist/images/logo-light.svg') }}" alt="">
                 </div>
                 <div class="d-flex mt-3">
                     <div class="text-success flex-shrink-0">
@@ -77,15 +77,17 @@
         <div class="container">
             <div class="d-flex justify-content-md-between align-items-center flex-wrap justify-content-center gap-3">
                 <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">logo</div>
+                    <div class="flex-shrink-0">
+                        <img src="{{ asset('application/assets/dist/images/logo-sm.svg') }}" />
+                    </div>
                     <div class="flex-grow-1 ms-3 text-white fs-6">Copyright © 2018-2020 Hannafoods | Webdesign by
                         Webdesign by
                         Ancologi</div>
                 </div>
                 <div class="gap-2 d-flex">
                     <a href="{{$settings->google_plus}}" target="_blank" style="color:black;">
-                      
-                   
+
+
                         <div class="bg-white rounded-circle d-flex justify-content-center align-items-center"
                             style="height: 32px; width: 32px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

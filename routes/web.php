@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Application\HomeController;
+use App\Http\Controllers\LocaleController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about-us', [HomeController::class, 'aboutUs'])->name('about-us');
@@ -13,6 +14,7 @@ Route::get('main-categories/{name}', [HomeController::class, 'showFatherCategory
 Route::get('categories/{name}', [HomeController::class, 'showCategory'])->name('show.categories.by.type');
 Route::get('products/{name}', [HomeController::class, 'allProduct'])->name('show.products.by.type');
 Route::get('products/{name}', [HomeController::class, 'showProduct'])->name('show.products.by.type');
+Route::get('lang/{locale}', LocaleController::class)->name('locale');
 
 Route::get('mysitemap', function(){
 
