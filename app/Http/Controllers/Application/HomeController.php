@@ -62,7 +62,7 @@ class HomeController extends Controller
     SEOMeta::setDescription('Hanna Food Category' . $name);
     $categories =  Category::Father($name)->Parent()->get();
     // $categories =  Category::get();
-
+    //dd($categories);
     return view('application.categories', compact('categories'));
   }
   public function showCategory($name)
@@ -112,8 +112,9 @@ class HomeController extends Controller
   {
     SEOMeta::setTitle('Hanna Food About Us');
     SEOMeta::setDescription('Hanna Food About Us');
-    $setting = Setting::select('about')->get();
-    return view('application.about-us',compact('setting'));
+    $data['setting'] = Setting::first();
+   
+    return view('application.about-us',compact('data'));
   }
   public function contact()
   {

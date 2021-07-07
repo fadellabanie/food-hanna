@@ -10,8 +10,8 @@
                 <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ __('Show All') }}</span>
             </h3>
             <div class="d-flex align-items-center">
-                <x-add-new-record-button data-toggle="modal"
-                data-target="#modal" wire:click="resetForm()">{{ __('Add new') }}
+                <x-add-new-record-button data-toggle="modal" data-target="#modal" wire:click="resetForm()">
+                    {{ __('Add new') }}
                 </x-add-new-record-button>
             </div>
         </div>
@@ -34,14 +34,14 @@
                         @forelse($videos as $video)
                         <tr>
                             <td class="pl-0 py-6">{{ $video->id }}</td>
-                           
+
                             <td class="pl-0">
                                 {{ $video->name }}
                             </td>
-                             <td class="pl-0">
+                            <td class="pl-0">
                                 {{ $video->url }}
                             </td>
-                             <td class="pl-0">
+                            <td class="pl-0">
                                 @if ($video->status == 1)
                                 <span class="label label-lg label-light-success label-inline">{{__("Active")}}</span>
                                 @else
@@ -49,13 +49,14 @@
                                 @endif
                             </td>
                             <td nowrap="nowrap">
-                                <x-edit-record-button data-toggle="modal" data-target="#modal" wire:click="edit({{ $video->id }})" />
+                                <x-edit-record-button data-toggle="modal" data-target="#modal"
+                                    wire:click="edit({{ $video->id }})" />
 
-                                    <x-delete-record-button wire:click="confirm({{ $video->id }})" data-toggle="modal"
-                                        data-target="#deleteModal">
-                                        </x-delete-modal>
+                                <x-delete-record-button wire:click="confirm({{ $video->id }})" data-toggle="modal"
+                                    data-target="#deleteModal">
+                                    </x-delete-modal>
                             </td>
-                           
+
                         </tr>
                         @empty
                         <tr>

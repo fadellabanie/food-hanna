@@ -58,7 +58,7 @@
                          <div class="form-group row">
                             <div class="col-lg-4">
                                 <x-label>{{__("About Video")}}</x-label>
-                                <x-input type="text" wire:model.defer="setting.about_video" field='setting.about_video'
+                                <x-input type="url" wire:model.defer="setting.about_video" field='setting.about_video'
                                     placeholder="{{__('Enter about video')}}" />
                             </div>
                             <div class="col-lg-8">

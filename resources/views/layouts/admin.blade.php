@@ -37,8 +37,9 @@
 	<!--begin::Header Mobile-->
 	<div id="kt_header_mobile" class="header-mobile header-mobile-fixed">
 		<!--begin::Logo-->
-		<a href="index.html">
-			<img alt="Logo" src="{{ asset('theme/assets/media/logos/logo-letter-1.png') }}"
+		<a href="{{route('admin')}}">
+			
+			<img alt="Logo" src="{{ asset('application/assets/dist/images/logo.svg') }}"
 				class="logo-default max-h-30px" />
 		</a>
 		<!--end::Logo-->
@@ -103,8 +104,8 @@
 							</button>
 							<!--end::Aside Toggle-->
 							<!--begin::Logo-->
-							<a href="index.html">
-								<img alt="Logo" src="{{ asset('theme/assets/media/logos/logo-letter-1.png') }}"
+							<a href="{{route('admin')}}">
+								<img alt="Logo" src="{{ asset('application/assets/dist/images/logo.svg') }}"
 									class="logo-sticky max-h-35px" />
 							</a>
 							<!--end::Logo-->

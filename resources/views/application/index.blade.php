@@ -10,14 +10,14 @@
     <div class="container">
       <div class="row row-cols-3 g-1 g-lg-5">
         <div class="col">
-          <a href="{{route('show.father.categories.by.type','do-ghazal')}}">
+          <a href="{{route('show.father.categories.by.type','do_ghazal')}}">
             <div class="d-flex flex-column justify-content-center align-items-center">
               <img src="{{asset($data['categories']->do_ghazal)}}" class="rounded-circle shadow p-3 bg-white w-75">
             </div>
           </a>
         </div>
         <div class="col">
-          <a href="{{route('show.father.categories.by.type','happy-cow_cheese')}}">
+          <a href="{{route('show.father.categories.by.type','happy_cow_cheese')}}">
             <div class="d-flex flex-column justify-content-center align-items-center">
               <img src="{{asset($data['categories']->happy_cow_cheese)}}"
                 class="rounded-circle shadow p-3 bg-white w-75">

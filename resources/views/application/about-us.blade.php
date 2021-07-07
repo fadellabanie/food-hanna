@@ -79,21 +79,21 @@
         <div class="col">
           <a href="{{route('show.father.categories.by.type','do-ghazal')}}">
           <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="{{asset($data['categories']->do_ghazal)}}" class="rounded-circle shadow p-3 bg-white w-75">
+            <img src="{{asset($data['setting']->do_ghazal)}}" class="rounded-circle shadow p-3 bg-white w-75">
           </div>
           </a>
         </div>
         <div class="col">
           <a href="{{route('show.father.categories.by.type','happy-cow_cheese')}}">
           <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="{{asset($data['categories']->happy_cow_cheese)}}" class="rounded-circle shadow p-3 bg-white w-75">
+            <img src="{{asset($data['setting']->happy_cow_cheese)}}" class="rounded-circle shadow p-3 bg-white w-75">
           </div>
           </a>
         </div>
         <div class="col">
           <a href="{{route('show.father.categories.by.type','dutso')}}">
           <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="{{asset($data['categories']->dutso)}}" class="rounded-circle shadow p-3 bg-white w-75">
+            <img src="{{asset($data['setting']->dutso)}}" class="rounded-circle shadow p-3 bg-white w-75">
           </div>
           </a>
         </div>
