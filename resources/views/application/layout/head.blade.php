@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <title>Food</title>
+  {!! SEOMeta::generate() !!}
 
   <link href="{{asset('application/assets/dist/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('application/assets/dist/css/offcanvas.css')}}" rel="stylesheet">

@@ -54,17 +54,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <input type="text" class="form-control mb-2" placeholder="Jouw naam">
-                        <input type="email" class="form-control mb-2" placeholder="E-mail">
-                        <input type="text" class="form-control mb-2" placeholder="Onderwerp">
+                        <x-input type="text" wire:model.defer="tilte" field='tilte'
+                        placeholder="{{__('Jouw naam')}}"  class="form-control mb-2" />
+
+                        <x-input type="text" wire:model.defer="email" field='email'
+                        placeholder="{{__('E-mail')}}"  class="form-control mb-2" />
+
+                        <x-input type="text" wire:model.defer="subject" field='subject'
+                        placeholder="{{__('Onderwerp')}}"  class="form-control mb-2" />
+                      
+
                     </div>
                     <div class="col-md-6 col-12">
-                        <textarea class="form-control" rows="5" placeholder="Uw bericht"></textarea>
+                        <textarea class="form-control" wire:model="body" rows="5" placeholder="Uw bericht"></textarea>
+                        <x-error field="body" />
+
                     </div>
                 </div>
 
                 <div class="d-grid d-md-flex justify-content-md-end">
-                    <button class="btn btn-success mt-3 px-5">{{__("Verzend")}}</button>
+                    <button class="btn btn-success mt-3 px-5" type="button" wire:click.prevent="send"
+                        wire:loading.attr="disabled"
+                        wire:loading.class="spinner spinner-white spinner-left">{{__("Verzend")}}</button>
                 </div>
 
             </div>
@@ -130,4 +141,6 @@
                 </div>
             </div>
         </div>
+    </footer>
+
 </div>

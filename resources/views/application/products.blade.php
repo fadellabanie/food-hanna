@@ -2,45 +2,8 @@
 @section('content')
 
 <div class="container">
-    <div id="myCarousel" class="carousel slide pt-5" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-          aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/dist/images/slider.svg" class="bd-placeholder-img" width="100%" height="100%" alt="">
-
-          <div class="container">
-            <div class="carousel-caption text-start">
-
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/dist/images/slider.svg" class="bd-placeholder-img" width="100%" height="100%" alt="">
-
-          <div class="container">
-            <div class="carousel-caption">
-
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/dist/images/slider.svg" class="bd-placeholder-img" width="100%" height="100%" alt="">
-
-          <div class="container">
-            <div class="carousel-caption text-end">
-
-            </div>
-          </div>
-        </div>
-
-        <img src="assets/dist/images/category-2.svg" class="position-absolute slider-logo">
-      </div>
-    </div>
+  @livewire('banner', ['location' => 'products'])
+ 
 </div>
 
 <div class="container">

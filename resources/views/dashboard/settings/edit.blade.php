@@ -1,4 +1,6 @@
 <x-admin-layout>
+    @section('title', __('Setting'))
+
     <x-slot name="header">
         <!--begin::Subheader-->
         <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
@@ -8,7 +10,7 @@
                     <!--begin::Page Heading-->
                     <div class="d-flex align-items-baseline flex-wrap mr-5">
                         <!--begin::Page Title-->
-                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('setting') }}</h5>
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">{{ __('Setting') }}</h5>
                         <!--end::Page Title-->
                     </div>
                     <!--end::Page Heading-->

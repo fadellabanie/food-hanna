@@ -36,7 +36,7 @@
                                     @enderror
                                     @if(! $image && $team->image)
                                     <div class="mt-5 symbol symbol-150">
-                                        <img alt="" src="{{ asset('storage/' . $team->image) }}" />
+                                        <img alt="" src="{{ asset($team->image) }}" />
                                     </div>
                                     @endif
                                 </div>

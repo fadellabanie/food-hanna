@@ -16,6 +16,7 @@ class Update extends Component
     public $dutso;
 
     protected $rules = [
+        'setting.about' => 'required',
         'setting.address' => 'required',
         'setting.mobile' => 'required',
         'setting.office' => 'required',
@@ -24,6 +25,8 @@ class Update extends Component
         'setting.twitter' => 'required',
         'setting.linkedin' => 'required',
         'setting.google_plus' => 'required',
+        'setting.about' => 'required',
+        'setting.about_video' => 'required',
         'dutso' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         'do_ghazal' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         'happy_cow_cheese' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',

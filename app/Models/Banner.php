@@ -13,6 +13,16 @@ class Banner extends Model
         'status',
     ];
 
+    public function scopeHome($query)
+    {
+        return $query->where('location', 'home');
+    }
+     public function scopeProduct($query)
+    {
+        return $query->where('location', 'products');
+    }
+
+
     public function images()
     {
         return $this->hasMany(BannerImage::class, 'banner_id');

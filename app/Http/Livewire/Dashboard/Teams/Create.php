@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard\Teams;
 
 use App\Models\Team;
 use Livewire\Component;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -23,7 +24,7 @@ class Create extends Component
     public function submit()
     {
         $validatedData = $this->validate();
-        $validatedData['image'] = ($this->image) ? $this->image->store('teams', 'public') : '';
+        $validatedData['image'] = ($this->image) ? HFUpload::make($this->image)->folder('teams')->upload() : '';
 
         Team::create($validatedData);
 

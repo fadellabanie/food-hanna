@@ -27,6 +27,8 @@ class CreateSettingsTable extends Migration
             $table->string('do_ghazal')->nullable();
             $table->string('happy_cow_cheese')->nullable();
             $table->string('dutso')->nullable();
+            $table->string('about_video')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Dashboard\Products;
 
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use App\Models\Product;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -54,7 +55,7 @@ class Create extends Component
     public function submit()
     {
         $validatedData = $this->validate();
-        $validatedData['image'] = ($this->image) ? $this->image->store('products', 'public') : '';
+        $validatedData['image'] = ($this->image) ? HFUpload::make($this->image)->folder('products')->upload() : '';
 
         Product::create($validatedData);
 
@@ -66,7 +67,6 @@ class Create extends Component
     {
         return view('livewire.dashboard.products.create', [
             'categories' => Category::Parent()->where('father', $this->father)->get(),
-
         ]);
     }
 }

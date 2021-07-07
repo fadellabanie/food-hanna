@@ -10,7 +10,7 @@ trait Translatable
     {
         
         if (isset($this->translatedAttributes) && in_array($key, $this->translatedAttributes)) {
-            $key = App::getLocale() . '_' . $key ;
+            $key = $key . '_' .  App::getLocale() ;
         }
 
         return parent::__get($key);

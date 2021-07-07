@@ -24,9 +24,7 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <x-label>{{__("English Description")}}</x-label>
-
                                 <x-textarea wire:model.defer="description_en" field='description_en'></x-textarea>
-
                             </div>
                             <div class="col-lg-6">
                                 <x-label>{{__("Dutch Description")}}</x-label>

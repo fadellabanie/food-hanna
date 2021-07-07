@@ -17,7 +17,7 @@
                                         name="location" id="kt_select2_1" wire:model="banner.location">
                                         <option selected>{{__("select")}}</option>
                                         <option value="home">{{__("Home")}}</option>
-                                        <option value="categories">{{__("Categories")}}</option>
+                                        <option value="news">{{__("News")}}</option>
                                         <option value="products">{{__("Products")}}</option>
                                     </select>
 

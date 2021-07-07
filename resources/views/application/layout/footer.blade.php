@@ -1,7 +1,6 @@
 <section class="contact p-5">
   <livewire:footer />
 
-</footer>
 
 <script src="{{asset('application/assets/dist/vendors/jquery.min.js')}}"></script>
 <script src="{{asset('application/assets/dist/owlcarousel/owl.carousel.js')}}"></script>

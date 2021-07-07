@@ -55,6 +55,19 @@
                                     placeholder="{{__('Enter Google Plus')}}" />
                             </div>
                         </div>
+                         <div class="form-group row">
+                            <div class="col-lg-4">
+                                <x-label>{{__("About Video")}}</x-label>
+                                <x-input type="text" wire:model.defer="setting.about_video" field='setting.about_video'
+                                    placeholder="{{__('Enter about video')}}" />
+                            </div>
+                            <div class="col-lg-8">
+                                    <x-label>{{__("About Us")}}</x-label>
+                                    <x-textarea wire:model.defer="setting.about" field='setting.about'></x-textarea>
+                            </div>
+                           
+                           
+                        </div>
 
                         <div class="col-lg-12">
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'auth'], function () {
     Route::get('/', App\Http\Controllers\Dashboard\HomeController::class)->name('admin');
 
     Route::resource('users', App\Http\Controllers\Dashboard\UserController::class);
@@ -14,4 +14,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('banners', App\Http\Controllers\Dashboard\BannerController::class);
     Route::get('settings', [App\Http\Controllers\Dashboard\SettingController::class, 'edit'])->name('settings.edit');
     Route::get('videos', [App\Http\Controllers\Dashboard\VideoController::class, 'index'])->name('videos.index');
+    Route::get('questions', [App\Http\Controllers\Dashboard\QuestionController::class, 'index'])->name('questions.index');
 });

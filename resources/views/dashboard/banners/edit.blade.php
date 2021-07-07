@@ -1,4 +1,6 @@
 <x-admin-layout>
+    @section('title', __('Update Banners'))
+
     <x-slot name="header">
         <!--begin::Subheader-->
         <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">

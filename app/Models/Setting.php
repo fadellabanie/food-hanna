@@ -20,5 +20,7 @@ class Setting extends Model
         'do_ghazal',
         'happy_cow_cheese',
         'dutso',
+        'about_video',
+        'about',
     ];
 }

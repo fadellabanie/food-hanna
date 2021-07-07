@@ -1,4 +1,6 @@
 <x-admin-layout>
+    @section('title', __('Categories'))
+
     @section('vendorStyles')
         <link rel="stylesheet" href="{{ asset('metronic/assets/plugins/custom/datatables/datatables.bundle.rtl.css') }}">
     @endsection

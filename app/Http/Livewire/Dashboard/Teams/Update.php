@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Dashboard\Teams;
 
 use App\Models\Team;
 use Livewire\Component;
+use App\Support\HFUpload;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Update extends Component
@@ -25,11 +27,11 @@ class Update extends Component
     {
         $this->validate();
         if ($this->image) {
-            if (Storage::disk('public')->exists($this->team->image)) {
-                Storage::disk('public')->delete($this->team->image);
+            if (File::exists($this->team->image)) {
+                File::delete($this->team->image);
             }
 
-            $this->team->image = $this->image->store('teams', 'public');
+            $this->team->image = HFUpload::make($this->image)->folder('teams')->upload();
         }
         $this->team->save();
 
