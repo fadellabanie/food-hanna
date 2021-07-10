@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Hamcrest\Core\Set;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -78,11 +79,13 @@ class HomeController extends Controller
     } elseif ($category->parent_id != 0 && $category->child_id != 0 && $category->sub_child_id == 0) {
       $categories =  Category::where('sub_child_id', $category->id)->get();
     } elseif ($category->parent_id != 0 && $category->child_id != 0 && $category->sub_child_id != 0) {
-      $product = Product::where('father', $category->father)->where('category_id', $category->id)->first();
-      if (!$product) {
+      $products = Product::where('father', $category->father)->where('category_id', $category->id)->get();
+      if (!$products) {
         return redirect()->route('home');
       }
-      return redirect()->route('show.products.by.type', $product->name_en);
+      return view('application.products', compact('products'));
+
+      // return redirect()->route('show.products.by.type',$category->father);
     }
 
     // $categories =  Category::get();
@@ -94,6 +97,8 @@ class HomeController extends Controller
   {
     SEOMeta::setTitle('Hanna Food Product' . $name);
     SEOMeta::setDescription('Hanna Food Product' . $name);
+    $name = str_replace('-', ' ', $name);
+
     $product =  Product::where('name_en', $name)->first();
 
     return view('application.single-product', compact('product'));
@@ -103,9 +108,21 @@ class HomeController extends Controller
   {
     SEOMeta::setTitle('Hanna Food Products' . $type);
     SEOMeta::setDescription('Hanna Food Products' . $type);
-    //  $products =  Product::whereFather($type)->get();
-    $products =  Product::get();
+    $type = str_replace('-', '_', $type);
 
+    $products =  Product::whereFather($type)->get();
+    //$products =  Product::get();
+    //dd($products);
+    return view('application.products', compact('products'));
+  } 
+  
+  public function searchForProduct(Request $request)
+  {
+   
+    $products =  Product::where('name_en','like','%'.$request->search.'%')
+    ->orWhere('name_nl','like','%'.$request->search.'%')
+    ->get();
+    
     return view('application.products', compact('products'));
   }
   public function aboutUs()
@@ -113,8 +130,8 @@ class HomeController extends Controller
     SEOMeta::setTitle('Hanna Food About Us');
     SEOMeta::setDescription('Hanna Food About Us');
     $data['setting'] = Setting::first();
-   
-    return view('application.about-us',compact('data'));
+
+    return view('application.about-us', compact('data'));
   }
   public function contact()
   {
@@ -122,21 +139,21 @@ class HomeController extends Controller
     SEOMeta::setDescription('Hanna Food Contact Us');
 
     return view('application.contact');
-  } 
+  }
   public function news()
   {
     SEOMeta::setTitle('Hanna Food News');
     SEOMeta::setDescription('Hanna Food News');
     $news = News::get();
-    return view('application.news',compact('news'));
-  } 
+    return view('application.news', compact('news'));
+  }
   public function showNews($name)
   {
-   $name = str_replace('-', ' ', $name);
+    $name = str_replace('-', ' ', $name);
     SEOMeta::setTitle('Hanna Food News');
     SEOMeta::setDescription('Hanna Food News');
-    $news = News::where('title_en','like',$name)->first();
-    
-    return view('application.show-news',compact('news'));
+    $news = News::where('title_en', 'like', $name)->first();
+
+    return view('application.show-news', compact('news'));
   }
 }

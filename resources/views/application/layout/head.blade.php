@@ -13,4 +13,5 @@
   <link rel="stylesheet" href="{{asset('application/assets/dist/owlcarousel/assets/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{asset('application/assets/dist/owlcarousel/assets/owl.theme.default.min.css')}}">
   <link href="{{asset('application/assets/dist/css/app.css')}}" rel="stylesheet">
+  @livewireStyles
 </head>

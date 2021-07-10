@@ -12,4 +12,11 @@ class BannerImage extends Model
         'banner_id',
         'image',
     ];
+
+
+
+    public function banner()
+    {
+        return $this->belongsTo(Banner::class);
+    }
 }

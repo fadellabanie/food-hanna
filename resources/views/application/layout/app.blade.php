@@ -3,8 +3,11 @@
 <body class="bg-white">
     @include('application.layout.nav')
 
-   @yield('content')
-   
+    @yield('content')
+
 
     @include('application.layout.footer')
-  
+    @livewireScripts
+</body>
+
+</html>

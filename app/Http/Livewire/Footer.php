@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ContactUs;
 use App\Models\Setting;
 use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
@@ -9,28 +10,32 @@ use Illuminate\Support\Facades\Mail;
 class Footer extends Component
 {
 
-    public $title =345;
+    public $title;
     public $email;
     public $subject;
     public $body;
 
     protected $rules = [
-        'body' => 'required',
-        'subject' => 'required',
-        'email' => 'required|email',
         'title' => 'required',
+        'email' => 'required',
+        'subject' => 'required',
+        'body' => 'required',
     ];
 
     public function send()
     {
         $validatedData = $this->validate();
-       
-        //Mail::to($this->email)->send(new MailableClass);
+
+        $setting = Setting::first();
+        Mail::to($setting->email)->send(new ContactUs($validatedData));
+        $this->reset();
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
-    
+
     public function render()
     {
-        return view('livewire.footer',[
+        return view('livewire.footer', [
             'settings' => Setting::first(),
         ]);
     }

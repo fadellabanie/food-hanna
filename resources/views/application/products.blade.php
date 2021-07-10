@@ -13,7 +13,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
-      <span class="fw-bold">DO Ghazal</span>
+      <span class="fw-bold">{{ str_replace('_',' ',__(Request::segment(2))) }}</span>
     </div>
   </div>
 </div>
@@ -37,10 +37,10 @@
                       <img class="img-fluid" src="{{asset($product->image)}}">
                   </div>
                   <div class="text-center">
-                      <a href="#" class="text-dark text-decoration-none fw-bold">{{$product->father}}</a>
+                      <a href="#" class="text-dark text-decoration-none fw-bold">{{str_replace('_',' ',$product->father)}}</a>
                       <p class="mt-3 mb-3 text-black-50">{{$product->name}}</p>
 
-                      <a href="{{route('show.product',$product->name)}}" class="btn btn-success">{{__("Lees meer")}}&nbsp;
+                      <a href="{{route('show.product.by.type',str_replace(' ','-',$product->name))}}" class="btn btn-success">{{__("Lees meer")}}&nbsp;
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                           <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                           </svg>

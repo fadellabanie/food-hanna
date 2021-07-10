@@ -10,10 +10,13 @@ class Banner extends Component
     public $location;
     public function render()
     {
+        $banners = BannerModel::with('images')
+        ->where('location',$this->location)
+        ->first();
+       
+      
         return view('livewire.banner',[
-            'banners' => BannerModel::with('images')
-            ->where('location',$this->location)
-            ->get(),
+            'banners' => $banners->images,
         ]);
     }
 }
