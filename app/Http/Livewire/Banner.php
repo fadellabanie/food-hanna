@@ -13,10 +13,10 @@ class Banner extends Component
         $banners = BannerModel::with('images')
         ->where('location',$this->location)
         ->first();
-       
-      
+
+
         return view('livewire.banner',[
-            'banners' => $banners->images,
+            'banners' =>($banners) ? $banners->images : collect(),
         ]);
     }
 }

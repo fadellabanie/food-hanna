@@ -9,6 +9,14 @@
 <script src="{{asset('application/assets/dist/js/offcanvas.js')}}"></script>
 <script>
   $(document).ready(function() {
+     $("#myCarousel .carousel-inner div").first().addClass("active");
+     $("#myCarousel .carousel-indicators button").first().addClass("active");
+
+    $('.client-indicator').click(function() {
+      $('.client-indicator.active').removeClass("active");
+      $(this).addClass("active");
+    });
+
       $('#news-owl-carousel').owlCarousel({
         loop: true,
         margin: 10,

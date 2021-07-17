@@ -102,8 +102,91 @@
 
 <div class="p-5"></div>
 
-<section class="about d-flex flex-column align-items-center justify-content-center p-5"
-  style="background-image: url('assets/dist/images/about.svg');">
+<section class="testimonial" style="background-color: #F5F8F2;">
+  <div class="text-center pt-5">
+    <h1 class="text-primary text-uppercase">{{__("WHAT OUR CLIENT SAY")}}</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div id="testimonialCarousel" class="carousel slide pt-5" data-bs-ride="carousel">
+            <div class="d-flex justify-content-center align-items-center gap-2">
+              <div style="cursor: pointer" class="active client-indicator" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1">
+                <img  class="rounded-circle client-logo" src="{{ asset('theme/assets/media/users/100_2.jpg') }}" alt="">
+              </div>
+              <div style="cursor: pointer" class="client-indicator" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-current="true" aria-label="Slide 2">
+                <img  class="rounded-circle client-logo" src="{{ asset('theme/assets/media/users/100_4.jpg') }}" alt="">
+              </div>
+              <div style="cursor: pointer" class="client-indicator" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-current="true" aria-label="Slide 3">
+                <img  class="rounded-circle client-logo" src="{{ asset('theme/assets/media/users/100_7.jpg') }}" alt="">
+              </div>
+            </div>
+            <div class="carousel-inner p-5">
+              <div class="carousel-item active">
+                <div class="container">
+                  <div class="row justify-content-center mt-3">
+                    <div class="col-md-8 text-center">
+                        <p>Lorem Ipsum is simply dummy text the printing type Ipsum is simply dummy text of the printer type Ipsum is simply
+                          dummy text of the printer type Ipsum is simply dummy text of the printer type Ipsum is simply dummy text of the
+                          printer
+                        </p>
+
+                        <h3 class="text-dark mt-5">David Michael</h3>
+                        <h4 class="text-primary mt-2">Founder & CEO Cubiex</h4>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row justify-content-center mt-3">
+                    <div class="col-md-8 text-center">
+                      <p>Lorem Ipsum is simply dummy text the printing type Ipsum is simply dummy text of the printer type Ipsum is
+                        simply
+                        dummy text of the printer type Ipsum is simply dummy text of the printer type Ipsum is simply dummy text of the
+                        printer
+                      </p>
+
+                      <h3 class="text-dark mt-5">David Michael</h3>
+                      <h4 class="text-primary mt-2">Founder & CEO Cubiex</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row justify-content-center mt-3">
+                    <div class="col-md-8 text-center">
+                      <p>Lorem Ipsum is simply dummy text the printing type Ipsum is simply dummy text of the printer type Ipsum is
+                        simply
+                        dummy text of the printer type Ipsum is simply dummy text of the printer type Ipsum is simply dummy text of the
+                        printer
+                      </p>
+
+                      <h3 class="text-dark mt-5">David Michael</h3>
+                      <h4 class="text-primary mt-2">Founder & CEO Cubiex</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="p-5"></div>
+
+<section class="about d-flex flex-column align-items-center justify-content-center p-5" style="background-image: url('assets/dist/images/about.svg');">
   <div>
     <h3 class="text-white">De ultieme theebeleving!</h3>
     <p class="text-light mt-5" style="max-width: 500px;">

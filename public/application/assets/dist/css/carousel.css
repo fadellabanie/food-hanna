@@ -6,7 +6,7 @@
 
 /* Carousel base class */
 .carousel {
-  margin-bottom: 4rem;
+  /*margin-bottom: 4rem;*/
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -82,4 +82,23 @@
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+.testimonial .carousel {
+  margin-bottom: 0 !important;
+}
+
+#testimonialCarousel .carousel-item {
+  height: auto !important;
+}
+
+.client-logo {
+  width: 50px;
+  height: 50px;
+}
+
+#testimonialCarousel .active > img {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #97BF3D;
 }
