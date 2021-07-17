@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
@@ -114,15 +115,15 @@ class HomeController extends Controller
     //$products =  Product::get();
     //dd($products);
     return view('application.products', compact('products'));
-  } 
-  
+  }
+
   public function searchForProduct(Request $request)
   {
-   
-    $products =  Product::where('name_en','like','%'.$request->search.'%')
-    ->orWhere('name_nl','like','%'.$request->search.'%')
-    ->get();
-    
+
+    $products =  Product::where('name_en', 'like', '%' . $request->search . '%')
+      ->orWhere('name_nl', 'like', '%' . $request->search . '%')
+      ->get();
+
     return view('application.products', compact('products'));
   }
   public function aboutUs()
@@ -130,15 +131,18 @@ class HomeController extends Controller
     SEOMeta::setTitle('Hanna Food About Us');
     SEOMeta::setDescription('Hanna Food About Us');
     $data['setting'] = Setting::first();
-
+    $data['right_question'] = Question::take(3)->orderBy('created_at','DESC')->get();
+    $data['left_question'] = Question::take(3)->orderBy('created_at','ASC')->get();
+   
     return view('application.about-us', compact('data'));
   }
   public function contact()
   {
     SEOMeta::setTitle('Hanna Food Contact Us');
     SEOMeta::setDescription('Hanna Food Contact Us');
+    $data['setting'] = Setting::first();
 
-    return view('application.contact');
+    return view('application.contact', compact('data'));
   }
   public function news()
   {

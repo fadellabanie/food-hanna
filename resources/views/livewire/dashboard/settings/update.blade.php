@@ -22,15 +22,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <x-label>{{__("Mobile")}}</x-label>
                                 <x-input type="text" wire:model.defer="setting.mobile" field='setting.mobile'
                                     placeholder="{{__('Enter Mobile')}}" />
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <x-label>{{__("Office")}}</x-label>
                                 <x-input type="text" wire:model.lazy="setting.office" field='setting.office'
                                     placeholder="{{__('Enter Office')}}" />
+                            </div>  
+                            <div class="col-lg-4">
+                                <x-label>{{__("Map")}}</x-label>
+                                <x-input type="url" wire:model.lazy="setting.map" field='setting.map'
+                                    placeholder="{{__('Enter Map')}}" />
                             </div>
                         </div>
                         <div class="form-group row">

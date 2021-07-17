@@ -9,7 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="index.html" class="text-success text-decoration-none">Home</a>
+      <a href="{{route('home')}}" class="text-success text-decoration-none">Home</a>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
@@ -24,8 +24,8 @@
   <div class="container">
       <div class="row">
           <div class="col text-center">
-              <h1 class="text-success">DO Ghazal</h1>
-              <p>Duis et aliquam orci. Vivamus augue quam, sollicitudin quis <br> bibendum quis, eleifend vitae velit.</p>
+              <h1 class="text-success">{{__("DO Ghazal")}}</h1>
+              <p>{{__("Duis et aliquam orci. Vivamus augue quam, sollicitudin quis")}} <br> {{__("bibendum quis, eleifend vitae velit.")}}</p>
           </div>
       </div>
 

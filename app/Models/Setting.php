@@ -22,5 +22,6 @@ class Setting extends Model
         'dutso',
         'about_video',
         'about',
+        'map',
     ];
 }

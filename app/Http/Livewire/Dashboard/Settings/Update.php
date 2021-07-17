@@ -26,6 +26,7 @@ class Update extends Component
         'setting.linkedin' => 'required',
         'setting.google_plus' => 'required',
         'setting.about' => 'required',
+        'setting.map' => 'required',
         'setting.about_video' => 'required',
         'dutso' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         'do_ghazal' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
